@@ -77,13 +77,17 @@ WSGI_APPLICATION = 'workers_benchmarks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django_db_geventpool.backends.postgresql_psycopg2',
         'NAME': "test",
         'USER': "postgres",
         'PASSWORD': "postgres",
-        'HOST': "psql",
+        'HOST': "gpsql",
         'PORT': 5432,
-        'CONN_MAX_AGE': 60
+        'CONN_MAX_AGE': 0,
+        'ATOMIC_REQUESTS': False,
+        'OPTIONS': {
+            'MAX_CONNS': 4
+        }
     }
 }
 

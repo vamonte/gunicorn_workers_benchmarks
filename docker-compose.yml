@@ -5,12 +5,13 @@ services:
     ports:
       - "8001:8000"
     depends_on:
-      - psql
+      - gpsql
     command: sh ./startup.sh
 
   redis:
     image: "redis:alpine"
-  psql:
+
+  gpsql:
     image: "postgres:9.5"
     environment:
       - POSTGRES_PASSWORD=postgres

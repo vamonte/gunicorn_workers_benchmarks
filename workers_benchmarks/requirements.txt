@@ -3,3 +3,6 @@ psycopg2
 gunicorn
 requests
 redis
+psycogreen
+django_db_geventpool
+gevent

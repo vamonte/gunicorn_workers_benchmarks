@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-until nc -z psql 5432; do
+until nc -z gpsql 5432; do
     echo "$(date) - waiting for postgres..."
     sleep 1
 done
