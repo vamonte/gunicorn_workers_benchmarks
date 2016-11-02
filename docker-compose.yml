@@ -7,6 +7,8 @@ services:
     depends_on:
       - gpsql
     command: sh ./startup.sh
+    environment:
+      - MAX_CONNS=10
 
   redis:
     image: "redis:alpine"
