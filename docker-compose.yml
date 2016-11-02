@@ -6,7 +6,7 @@ services:
       - "8000:8000"
     depends_on:
       - psql
-    command: gunicorn -w 4 -k sync -b :8000 workers_benchmarks.wsgi
+    command: sh ./startup.sh
 
   psql:
     image: "postgres:9.5"
