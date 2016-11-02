@@ -8,6 +8,8 @@ services:
       - psql
     command: sh ./startup.sh
 
+  redis:
+    image: "redis:alpine"
   psql:
     image: "postgres:9.5"
     environment:

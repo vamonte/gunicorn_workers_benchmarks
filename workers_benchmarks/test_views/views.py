@@ -1,4 +1,5 @@
 import json
+from . import r as redis
 from . import session
 from django.http.response import HttpResponse
 from django.db import transaction
@@ -38,8 +39,6 @@ def create_data(request, n=0):
     return HttpResponse(json.dumps(n))
 
 
-def create_data_and_request(request, n=0):
-    r = __session_request(n)
-    __create_simple_data(n)
-    return HttpResponse(json.dumps({n: r.status_code}))
-
+def create_data_in_redis(request, n=0):
+    redis.set("a", n)
+    return HttpResponse(status=200)

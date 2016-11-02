@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^simple_json', simple_json),
     url(r'^simple_request/(?P<n>\w+)', simple_requests),
     url(r'^create_data/(?P<n>\w+)', create_data),
-    url(r'^create_data_and_request/(?P<n>\w+)', create_data_and_request)
+    url(r'^create_data_in_redis/(?P<n>\w+)', create_data_in_redis),
 ]
