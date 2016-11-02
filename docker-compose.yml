@@ -1,0 +1,17 @@
+version: '2'
+services:
+  sync:
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - psql
+    command: gunicorn -w 4 -k sync -b :8000 workers_benchmarks.wsgi
+
+  psql:
+    image: "postgres:9.5"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=test
+    command: postgres -c log_min_duration_statement=1 -c log_connections=1 -c log_disconnections=1
