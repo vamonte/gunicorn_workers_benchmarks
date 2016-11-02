@@ -1,9 +1,9 @@
 version: '2'
 services:
-  sync:
+  gevent:
     build: .
     ports:
-      - "8000:8000"
+      - "8001:8000"
     depends_on:
       - psql
     command: sh ./startup.sh
