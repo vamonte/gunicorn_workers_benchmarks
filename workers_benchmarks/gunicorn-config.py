@@ -1,6 +1,6 @@
 bind = ':8000'
 workers = 4
-worker_class = 'sync'
+worker_class = 'gevent'
 
 try:
     from gevent import monkey

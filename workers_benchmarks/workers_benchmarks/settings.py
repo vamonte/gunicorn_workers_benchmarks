@@ -86,7 +86,7 @@ DATABASES = {
         'CONN_MAX_AGE': 0,
         'ATOMIC_REQUESTS': False,
         'OPTIONS': {
-            'MAX_CONNS': 4
+            'MAX_CONNS': int(os.environ.get("MAX_CONNS", 1))
         }
     }
 }
