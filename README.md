@@ -22,7 +22,7 @@ Used command:
 ```
 
 ### A - Sync worker
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **4**        |    0.871       |  1147.95    |
 |         **4**        |    0.847       |  1180.07    |
@@ -34,7 +34,7 @@ Used command:
 | :---:                | :---:          | :---:       |
 
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **8**        |    0.699       |  1429.80    |
 |         **8**        |    0.737       |  1355.96    |
@@ -45,7 +45,7 @@ Used command:
 |         Average      |    0.720       |  1392,414   |
 | :---:                | :---:          | :---:       |
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **16**       |    0.665       |  1503.45    |
 |         **16**       |    0.629       |  1588.56    |
@@ -58,7 +58,7 @@ Used command:
 
 ### B - Gevent worker
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **4**        |    1.102       |  907.31     |
 |         **4**        |    1.139       |  877.88     |
@@ -70,7 +70,7 @@ Used command:
 | :---:                | :---:          | :---:       |
 
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **8**        |    1.037       |  964.56     |
 |         **8**        |    1.125       |  889.07     |
@@ -81,7 +81,7 @@ Used command:
 |         Average      |    1.070       |  937,016    |
 | :---:                | :---:          | :---:       |
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **16**       |    1.018       |  982.41     |
 |         **16**       |    0.956       |  1045.79    |
@@ -110,7 +110,7 @@ Used command:
 ```
 
 ### A - Sync worker
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **4**        |    30.373      |  32.92      |
 |         **4**        |    30.885      |  32.38      |
@@ -122,7 +122,7 @@ Used command:
 | :---:                | :---:          | :---:       |
 
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **8**        |    29.976      |  33.36      |
 |         **8**        |    29.621      |  33.76      |
@@ -133,7 +133,7 @@ Used command:
 |         Average      |    29,924      |  33,424     |
 | :---:                | :---:          | :---:       |
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **16**       |    29.449      |  33.96      |
 |         **16**       |    29.121      |  34.34      |
@@ -147,7 +147,7 @@ Used command:
 
 ### B - Gevent worker
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **4**        |    30.487      |  32.80      |
 |         **4**        |    30.757      |  32.51      |
@@ -159,7 +159,7 @@ Used command:
 | :---:                | :---:          | :---:       |
 
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **8**        |    15.452      |  64.72      |
 |         **8**        |    15.002      |  66.66      |
@@ -170,7 +170,7 @@ Used command:
 |         Average      |    15,202      |  65,790     |
 | :---:                | :---:          | :---:       |
 
-| concurrency number   | resp time (sc) | rq/sc       |
+| concurrency number   | Tot  time (sc) | rq/sc       |
 | :---:                | :---:          | :---:       |
 |         **16**       |    7.967       |  125.51     |
 |         **16**       |    7.385       |  135.42     |
@@ -186,3 +186,88 @@ Used command:
 
 _Not yet..._
  
+
+## II - Save data in postgres data before response:
+
+Benchmark on a view that save some data in postgres before to build and to return an HTTP response.
+
+Used command:
+```sh
+  ab -c {concurrency number} -n 1000 http://localhost:800[0|1]/create_data/1
+```
+
+### A - Sync worker
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **4**        |    6.475       |  154.43     |
+|         **4**        |    6.384       |  156.63     |
+|         **4**        |    6.385       |  156.61     |
+|         **4**        |    6.453       |  154.97     |
+|         **4**        |    6.565       |  152.33     |
+
+|         Average      |    6.452       |  154.994    |
+| :---:                | :---:          | :---:       |
+
+
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **8**        |    7.288       |  137.21     |
+|         **8**        |    6.695       |  149.38     |
+|         **8**        |    6.563       |  152.38     |
+|         **8**        |    6.379       |  156.75     |
+|         **8**        |    6.482       |  154.27     |
+
+|         Average      |    6.681       |  149.998     |
+| :---:                | :---:          | :---:       |
+
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **16**       |    6.484       |  154.23     |
+|         **16**       |    7.468       |  133.90     |
+|         **16**       |    6.446       |  155.14     |
+|         **16**       |    6.404       |  156.16     |
+|         **16**       |    6.718       |  148.85     |
+
+|         Average      |    6,704       |  149.656    |
+| :---:                | :---:          | :---:       |
+
+
+### A - Gevent worker (MAC_CONNS=10)
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **4**        |    7.089       |  141.06     |
+|         **4**        |    6.938       |  144.13     |
+|         **4**        |    6.892       |  145.10     |
+|         **4**        |    6.795       |  147.17     |
+|         **4**        |    6.995       |  142.96     |
+
+|         Average      |    6.942       |  144,084    |
+| :---:                | :---:          | :---:       |
+
+
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **8**        |    4.725       |  211.64     |
+|         **8**        |    4.677       |  213.80     |
+|         **8**        |    4.676       |  213.87     |
+|         **8**        |    4.494       |  222.52     |
+|         **8**        |    4.828       |  207.15     |
+
+|         Average      |    4,680       |  213,796    |
+| :---:                | :---:          | :---:       |
+
+| concurrency number   | Tot  time (sc) | rq/sc       |
+| :---:                | :---:          | :---:       |
+|         **16**       |    3.217       |  310.89     |
+|         **16**       |    3.275       |  305.34     |
+|         **16**       |    3.090       |  323.59     |
+|         **16**       |    3.341       |  299.31     |
+|         **16**       |    3.302       |  302.89     |
+
+|         Average      |    3.245       |  308.404    |
+| :---:                | :---:          | :---:       |
+
+
+### __Conclusion :__
+
+_Not yet..._
