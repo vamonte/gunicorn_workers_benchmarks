@@ -42,3 +42,25 @@ def create_data(request, n=0):
 def create_data_in_redis(request, n=0):
     redis.set("a", n)
     return HttpResponse(status=200)
+
+def read_data_in_redis(request, k="a"):
+    return HttpResponse(redis.get("a"))
+
+def request_and_read_redis(request):
+    r = __session_request(0)
+    return HttpResponse(redis.get("a"))
+
+def read_redis_and_request(request):
+    rd = redis.get("a")
+    r = __session_request(0)
+    return HttpResponse(rd)
+
+def create_data_and_read_redis(request):
+    __create_simple_data(0)
+    return HttpResponse(redis.get("a"))
+
+def read_redis_and_create_data(request):
+    rd = redis.get("a")
+    __create_simple_data(0)
+    return HttpResponse(rd)
+

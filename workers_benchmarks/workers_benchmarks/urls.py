@@ -23,4 +23,9 @@ urlpatterns = [
     url(r'^simple_request/(?P<n>\w+)', simple_requests),
     url(r'^create_data/(?P<n>\w+)', create_data),
     url(r'^create_data_in_redis/(?P<n>\w+)', create_data_in_redis),
+    url(r'^read_data_in_redis/(?P<k>\w+)', read_data_in_redis),
+    url(r'^request_and_read_redis', request_and_read_redis),
+    url(r'^request_and_read_redis', request_and_read_redis),
+    url(r'^create_data_and_read_redis', create_data_and_read_redis),
+    url(r'^read_redis_and_create_data', read_redis_and_create_data)
 ]
