@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^request_and_read_redis', request_and_read_redis),
     url(r'^request_and_read_redis', request_and_read_redis),
     url(r'^create_data_and_read_redis', create_data_and_read_redis),
-    url(r'^read_redis_and_create_data', read_redis_and_create_data)
+    url(r'^read_redis_and_create_data', read_redis_and_create_data),
+    url(r'^read_data', read_data)
 ]
